@@ -1,9 +1,10 @@
 <?php
 
-namespace duncan3dc\SonosTests;
+namespace duncan3dc\SonosTests\Devices;
 
 use duncan3dc\ObjectIntruder\Intruder;
-use duncan3dc\Sonos\Device;
+use duncan3dc\Sonos\Devices\Device;
+use duncan3dc\SonosTests\MockTest;
 
 class DeviceTest extends MockTest
 {
