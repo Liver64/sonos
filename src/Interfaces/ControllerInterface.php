@@ -3,9 +3,9 @@
 namespace duncan3dc\Sonos\Interfaces;
 
 use duncan3dc\Sonos\ControllerState;
+use duncan3dc\Sonos\Interfaces\QueueInterface;
 use duncan3dc\Sonos\Interfaces\UriInterface;
 use duncan3dc\Sonos\Interfaces\Utils\TimeInterface;
-use duncan3dc\Sonos\Queue;
 use duncan3dc\Sonos\State;
 use duncan3dc\Sonos\Tracks\Stream;
 
@@ -293,7 +293,7 @@ interface ControllerInterface extends SpeakerInterface
      *
      * @return Queue
      */
-    public function getQueue(): Queue;
+    public function getQueue(): QueueInterface;
 
 
     /**
