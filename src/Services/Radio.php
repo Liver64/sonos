@@ -5,12 +5,13 @@ namespace duncan3dc\Sonos\Services;
 use duncan3dc\DomParser\XmlParser;
 use duncan3dc\Sonos\Exceptions\NotFoundException;
 use duncan3dc\Sonos\Interfaces\ControllerInterface;
+use duncan3dc\Sonos\Interfaces\Services\RadioInterface;
 use duncan3dc\Sonos\Tracks\Stream;
 
 /**
  * Handle radio streams using TuneIn.
  */
-class Radio
+final class Radio implements RadioInterface
 {
     /**
      * @var int The key for station types.
@@ -91,7 +92,7 @@ class Radio
      *
      * @return Stream
      */
-    public function getFavouriteStation(string $name)
+    public function getFavouriteStation(string $name): Stream
     {
         $roughMatch = false;
 
@@ -133,7 +134,7 @@ class Radio
      *
      * @return Stream
      */
-    public function getFavouriteShow(string $name)
+    public function getFavouriteShow(string $name): Stream
     {
         $roughMatch = false;
 
