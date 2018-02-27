@@ -7,8 +7,9 @@ use duncan3dc\Sonos\Exceptions\SonosException;
 use duncan3dc\Sonos\Interfaces\ControllerInterface;
 use duncan3dc\Sonos\Interfaces\QueueInterface;
 use duncan3dc\Sonos\Interfaces\TrackInterface;
+use duncan3dc\Sonos\Interfaces\Tracks\FactoryInterface;
 use duncan3dc\Sonos\Interfaces\UriInterface;
-use duncan3dc\Sonos\Tracks\Factory as TrackFactory;
+use duncan3dc\Sonos\Tracks\Factory;
 
 /**
  * Provides an interface for managing the queue of a controller.
@@ -31,7 +32,7 @@ class Queue implements QueueInterface
     protected $controller;
 
     /**
-     * @var TrackFactory $trackFactory A factory to create tracks from.
+     * @var FactoryInterface $trackFactory A factory to create tracks from.
      */
     protected $trackFactory;
 
@@ -40,13 +41,18 @@ class Queue implements QueueInterface
      * Create an instance of the Queue class.
      *
      * @param ControllerInterface $controller The Controller instance that this queue is for
+     * @param FactoryInterface $trackFactory A factory to create tracks from
      */
-    public function __construct(ControllerInterface $controller)
+    public function __construct(ControllerInterface $controller, FactoryInterface $factory = null)
     {
         $this->id = "Q:0";
         $this->updateId = 0;
         $this->controller = $controller;
-        $this->trackFactory = new TrackFactory($this->controller);
+
+        if ($factory === null) {
+            $factory = new Factory($this->controller);
+        }
+        $this->trackFactory = $factory;
     }
 
 
