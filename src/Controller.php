@@ -380,6 +380,20 @@ final class Controller implements ControllerInterface
 
 
     /**
+     * Set the topology of this speaker.
+     *
+     * @param array $topology The topology attributes as key/value pairs
+     *
+     * @return $this
+     */
+    public function setTopology(array $topology): SpeakerInterface
+    {
+        $this->speaker->setTopology($topology);
+        return $this;
+    }
+
+
+    /**
      * Adds the specified speaker to the group of this Controller.
      *
      * @param SpeakerInterface $speaker The speaker to add to the group
